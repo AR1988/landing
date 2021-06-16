@@ -1,0 +1,30 @@
+<div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': (100/(3/page))+'%'}"
+       aria-valuenow="25" aria-valuemin="0"
+       aria-valuemax="100"></div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <app-form-page1 *ngIf="page === 1"
+                    (formValue)="addToModel($event)"
+                    [model]="model"></app-form-page1>
+
+    <app-form-page2 *ngIf="page === 2"
+                    (formValue)="addToModel($event)"
+                    (back)="page = page - 1"
+                    [model]="model"></app-form-page2>
+
+    <app-form-page3 *ngIf="page === 3 && model"
+                    (formValue)="addToModel($event)"
+                    (back)="page = page - 1"
+                    (submit)="submitForm()"
+                    [linkedInId]="model.linkedInUrl"
+                    [email]="model.email"
+                    [name]="model.firstName +' '+ model.lastName"></app-form-page3>
+  </div>
+</div>
+
+<div *ngIf="errorMsg">
+  <div class="alert alert-warning">{{errorMsg}}</div>
+</div>

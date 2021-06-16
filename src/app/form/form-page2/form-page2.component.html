@@ -1,0 +1,42 @@
+<div class="mt-3" *ngFor="let list of lists">
+  <div class="card mt-3">
+    <div class="card-header">
+      <div class="card-title">*{{list.title}}</div>
+      <div class="card-subtitle">{{list.subTitle}}</div>
+      <div class="text-muted">{{list.description}}</div>
+    </div>
+    <div class="card-body">
+      <div class="list-group ">
+        <button class="list-group-item list-group-item-action"
+                *ngFor="let elt of list.list"
+                (click)="onClickElt(elt, list.listNr)"
+                [disabled]="arrayFull(elt,list.listNr)"
+                [class.bg-warning]="elementSelected(elt, list.listNr)"
+        >{{elt}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="card-title">*Оцените Ваши знания английского языка</div>
+    <div class="text-muted">От 1 (знания отсутствуют) до 10 (разговорный)</div>
+  </div>
+  <div class="card-body ">
+    <div class="btn-group d-flex flex-fill d-grid gap-3">
+      <button class="btn btn-warning"
+              *ngFor="let lvl of lvls"
+              [class.btn-outline-secondary]="engLvl !== lvl"
+              [class.btn-warning]="engLvl === lvl"
+              (click)="engLvl = lvl">{{lvl | number}}</button>
+    </div>
+  </div>
+</div>
+<div class="d-grid gap-2 d-flex justify-content-end mt-3">
+  <button class="btn btn-secondary d-block" (click)="onBack()">step back</button>
+  <button class="btn btn-success d-block" (click)="onSubmit()"
+          [disabled]="(startupPosAnswer.length == 0 || interestsAnswer.length == 0 || businessGoalsAnswer.length == 0 || engLvl ==0)">
+    next
+    step
+  </button>
+</div>

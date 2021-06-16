@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="form">
+
+  <div class="mb-3">
+    <label for="first-name-input" class="form-label">*First name</label>
+    <input type="text" class="form-control" id="first-name-input" placeholder="First name" formControlName="firstName">
+  </div>
+
+  <div class="mb-3">
+    <label for="last-name-input" class="form-label">*Last name</label>
+    <input type="text" class="form-control" id="last-name-input" placeholder="lastName" formControlName="lastName">
+  </div>
+
+  <div class="mb-3">
+    <label for="linked-in-url-input" class="form-label">*LinkedIn url</label>
+    <input type="url" class="form-control" id="linked-in-url-input" placeholder="LinkedIn url"
+           formControlName="linkedInUrl">
+  </div>
+
+  <div class="mb-3">
+    <label for="phone-number-input" class="form-label">*Phone Number</label>
+    <input type="tel" class="form-control" id="phone-number-input" placeholder="Phone Number"
+           formControlName="phoneNumber">
+  </div>
+
+  <div class="mb-3">
+    <label for="email-input" class="form-label">*Email</label>
+    <input type="email" class="form-control" id="email-input" placeholder="Email" formControlName="email">
+  </div>
+
+  <div class="d-grid gap-2 d-flex justify-content-end mt-3">
+    <button class="btn btn-success d-block" type="submit" [disabled]="form.invalid">next step</button>
+  </div>
+</form>
