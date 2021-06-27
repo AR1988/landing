@@ -9,6 +9,8 @@ import {FormPage3Component, SafePipe} from './form/form-page3/form-page3.compone
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import {PageComponent} from './page/page.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import {HttpClientModule} from "@angular/common/http";
     FormPage2Component,
     FormPage3Component,
     SafePipe,
+    PageComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

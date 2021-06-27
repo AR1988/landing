@@ -78,9 +78,6 @@ export class FormPage2Component implements OnInit {
   lvls: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   engLvl: number = 0;
 
-  constructor() {
-  }
-
   ngOnInit(): void {
     if (this.model?.startupPos)
       this.startupPosAnswer = this.model.startupPos;

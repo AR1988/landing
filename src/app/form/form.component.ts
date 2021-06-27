@@ -1,15 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {CustomerData} from "../model/customerData";
-import {CustomerDataService} from "./service/customer-data.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Subscription} from "rxjs";
+import {CustomerDataService} from "../service/customer-data.service";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit, OnDestroy {
+export class FormComponent implements OnDestroy {
 
   page: number = 1;
   model: CustomerData | undefined;
@@ -18,10 +19,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  constructor(private customerDataService: CustomerDataService) {
-  }
-
-  ngOnInit(): void {
+  constructor(private customerDataService: CustomerDataService, private activeModal: NgbActiveModal) {
   }
 
   addToModel($event: any) {
@@ -62,7 +60,7 @@ export class FormComponent implements OnInit, OnDestroy {
     }
 
     const submitFormSubscription: Subscription = this.customerDataService.submitForm(this.model)
-      .subscribe(() => this.page = 1,
+      .subscribe(() => this.activeModal.close("form submitted"),
         error => this.callbackError(error));
     this.subscriptions.push(submitFormSubscription)
   }

@@ -11,8 +11,4 @@ export interface CustomerData {
   interests: string[];
   businessGoals: string[];
   engLvl: number;
-
-  // TODO
-  videoUrl1: string;
-  videoUrl2: string;
 }

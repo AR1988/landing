@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {CustomerData} from "../../model/customerData";
 import {Observable} from "rxjs";
+import {CustomerData} from "../model/customerData";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ export class CustomerDataService {
 
   private readonly hostUrl = '/api/'
   private readonly addEndpoint = this.hostUrl + 'customer-data'
-  // private readonly getEndpoint = this.addEndpoint;
   private readonly submitEndpoint = this.hostUrl + 'customer-data/submit'
 
   constructor(private client: HttpClient) {
